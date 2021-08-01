@@ -3,6 +3,7 @@ body {
     padding-bottom: 40px;
     padding-left: 25px;
     background: linear-gradient(to right, #141e30, #243b55);
+    color: white;
 }
 
 .form-signin {
