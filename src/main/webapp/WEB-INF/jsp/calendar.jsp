@@ -9,27 +9,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Crie uma conta</title>
+    <!-- BOOTSTRAP -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css' rel='stylesheet' />
+    <!-- FONTAWESOME -->
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+    <!-- FULLCALENDAR -->
+    <link rel="stylesheet" href="${contextPath}/resources/js/fullcalendar/main.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/style-calendar.css">
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+    <script src="${contextPath}/resources/js/calendar-milena.js"></script>
+    <script src="${contextPath}/resources/js/fullcalendar/main.js"></script>
+    <script src="${contextPath}/resources/js/fullcalendar/locales/pt-br.js"></script>
+    <script src="${contextPath}/resources/js/@fullcalendar/interaction/main.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>Calendar</title>
+
 </head>
 <body>
 
 <navbar>
     <img src="https://www.tokenlab.com.br/img/tl-logo.png">
 </navbar>
-
+<div id='calendar'></div>
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -37,9 +39,8 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
-        <h2>Bem vindo(a) ${pageContext.request.userPrincipal.name}
-            <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-        </h2>
+        <a onclick="document.forms['logoutForm'].submit()">Logout</a>
+
 
     </c:if>
 
