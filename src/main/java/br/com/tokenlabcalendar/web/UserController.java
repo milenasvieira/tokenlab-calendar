@@ -53,6 +53,10 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/calendar"}, method = RequestMethod.GET)
     public String calendar(Model model) {
+
+
+
+
         return "calendar";
     }
 }
