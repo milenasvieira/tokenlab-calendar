@@ -1,13 +1,14 @@
 body {
-    padding-top: 40px;
+    padding-top: 25px;
     padding-bottom: 40px;
-    background-color: #eee;
+    padding-left: 25px;
+    background: linear-gradient(to right, #141e30, #243b55);
 }
 
 .form-signin {
     max-width: 330px;
     padding: 15px;
-    margin: 0 auto;
+    margin: 30px auto;
 }
 
 .form-signin .form-signin-heading,
@@ -45,4 +46,8 @@ body {
 
 .has-error {
     color: red
+}
+
+img {
+    width: 250px;
 }
