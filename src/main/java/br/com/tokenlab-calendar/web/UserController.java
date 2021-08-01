@@ -37,7 +37,7 @@ public class UserController {
 
         userService.save(userForm);
 
-        return "redirect:/welcome";
+        return "redirect:/calendar";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -51,8 +51,8 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
+    @RequestMapping(value = {"/", "/calendar"}, method = RequestMethod.GET)
+    public String calendar(Model model) {
+        return "calendar";
     }
 }
