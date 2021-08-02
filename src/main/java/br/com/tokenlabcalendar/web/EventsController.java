@@ -1,13 +1,13 @@
-package br.com.tokenlabcalendar.web;
+package net.guides.springboot.loginregistrationspringbootauthjsp.web;
 
 
-import br.com.tokenlabcalendar.model.Event;
-import br.com.tokenlabcalendar.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import net.guides.springboot.loginregistrationspringbootauthjsp.repository.EventRepository;
+import net.guides.springboot.loginregistrationspringbootauthjsp.model.Event;
 
 import java.util.List;
 
@@ -17,36 +17,42 @@ public class EventsController {
     @Autowired
     EventRepository eventRepository;
 
-    @PostMapping("/createEvent")
-    public String createEvent(Event event) {
-
-        eventRepository.save(event);
-        return "redirect:/calendar";
+    @PostMapping(value = "/createEvent",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public String createEvent(@RequestBody Event event, Model model) {
+        event = eventRepository.save(event);
+        model.addAttribute(event);
+        return "success";
     }
 
-    @GetMapping("/getEvents")
-    public List<Event> getEvents() {
-        return (List<Event>) eventRepository.findAll();
+    @GetMapping(value = "/getEvents",  produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getEvents(Model model) {
+        List<Event> eventList = (List<Event>) eventRepository.findAll();
+        model.addAttribute(eventList);
+        return "success";
     }
 
     @GetMapping("/getEventById")
-    public Event getEvents(long id) {
-        return eventRepository.findById(id).get();
+    public String getEvents(@RequestHeader long id, Model model) {
+        Event event =  eventRepository.findById(id).get();
+        model.addAttribute(event);
+        return "success";
     }
 
     @PatchMapping("/updateEvent")
-    public String updateEvent(Event event) {
+    public String updateEvent(@RequestBody Event event, Model model) {
 
-        eventRepository.save(event);
-        return "redirect:/calendar";
+        event = eventRepository.save(event);
+        model.addAttribute(event);
+        return "success";
     }
 
 
     @DeleteMapping("/deleteEvent")
-    public String deleteEvent(long id) {
+    public String deleteEvent(@RequestHeader long id, Model model) {
 
         eventRepository.deleteById(id);
-        return "redirect:/calendar";
+        model.addAttribute((Long) id);
+        return "success";
     }
 
 

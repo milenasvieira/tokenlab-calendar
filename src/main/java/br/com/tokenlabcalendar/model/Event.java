@@ -1,7 +1,9 @@
-package br.com.tokenlabcalendar.model;
+package net.guides.springboot.loginregistrationspringbootauthjsp.model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -12,6 +14,7 @@ public class Event {
     public String groupId;
     public String url;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
