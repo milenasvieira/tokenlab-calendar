@@ -1,5 +1,6 @@
 package net.guides.springboot.loginregistrationspringbootauthjsp.web;
 
+import br.com.tokenlabcalendar.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import net.guides.springboot.loginregistrationspringbootauthjsp.model.User;
 import net.guides.springboot.loginregistrationspringbootauthjsp.service.UserService;
 import net.guides.springboot.loginregistrationspringbootauthjsp.validator.UserValidator;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -54,9 +59,26 @@ public class UserController {
     @RequestMapping(value = {"/", "/calendar"}, method = RequestMethod.GET)
     public String calendar(Model model) {
 
-
-
-
         return "calendar";
     }
+
+    public static List<Event> userEvents;
+
+    @RequestMapping(value = "/events", method = RequestMethod.GET)
+    public List<Event> registration(Model model,
+                                    @RequestParam(required = false) String start, @RequestParam(required = false) String end) {
+
+        if(userEvents==null) {
+            userEvents = new ArrayList<>();
+
+            userEvents.add(new Event("Academia", "2021-07-07",
+                    "2021-07-10"));
+        }
+
+        model.addAttribute("events", userEvents);
+
+        return userEvents;
+
+    }
+
 }

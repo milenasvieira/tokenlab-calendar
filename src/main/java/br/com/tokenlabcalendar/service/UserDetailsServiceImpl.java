@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.guides.springboot.loginregistrationspringbootauthjsp.model.Role;
 import net.guides.springboot.loginregistrationspringbootauthjsp.model.User;
 import net.guides.springboot.loginregistrationspringbootauthjsp.repository.UserRepository;
 

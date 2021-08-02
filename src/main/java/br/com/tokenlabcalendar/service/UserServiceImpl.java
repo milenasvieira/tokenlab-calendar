@@ -7,22 +7,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import net.guides.springboot.loginregistrationspringbootauthjsp.model.User;
-import net.guides.springboot.loginregistrationspringbootauthjsp.repository.RoleRepository;
 import net.guides.springboot.loginregistrationspringbootauthjsp.repository.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements net.guides.springboot.loginregistrationspringbootauthjsp.service.UserService {
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
-	private RoleRepository roleRepository;
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public void save(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setRoles(new HashSet<>(roleRepository.findAll()));
 		userRepository.save(user);
 	}
 
